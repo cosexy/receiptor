@@ -49,17 +49,6 @@ const battery = computed(() => `/images/status/${darkTheme.value ? 'dark' : 'lig
 </script>
 
 <style scoped>
-@font-face {
-  font-family: 'SF Pro Display';
-  src: url(/fonts/SF-Pro/SF-Pro-Display-Regular.otf) format('otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-._wrapper {
-  font-family: "SF Pro Display", serif;
-}
-
 .status_right {
   position: absolute;
   display: flex;

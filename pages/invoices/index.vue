@@ -68,7 +68,7 @@
         </a-form-item>
 
         <a-form-item label="Nội dung">
-          <a-input v-model:value="form.code" />
+          <a-input v-model:value="form.content" />
         </a-form-item>
       </a-form>
     </div>

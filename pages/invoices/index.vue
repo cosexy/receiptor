@@ -107,14 +107,14 @@ import banksData from 'assets/json/banks.json'
 import { IPhoneStatus } from '~/entities/status.entities'
 
 const form = reactive<InvoiceEntity>({
-  amount: '10000',
-  account: '123456789',
-  name: 'Tran Van A',
-  code: '12345678',
-  content: 'Chuyen tien',
-  bank: 'Ngân hàng TMCP Việt Nam Thịnh Vượng',
-  sender: 'Tran Van A',
-  senderAccount: '123456789'
+  amount: '',
+  account: '',
+  name: '',
+  code: '',
+  content: '',
+  bank: '',
+  sender: '',
+  senderAccount: ''
 })
 
 const banks = shallowRef<BankEntity[]>([
@@ -156,7 +156,7 @@ const banks = shallowRef<BankEntity[]>([
   }
 ])
 
-const currentBank = shallowRef(banks.value[5])
+const currentBank = shallowRef(banks.value[0])
 
 /**
  * Status

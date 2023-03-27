@@ -6,21 +6,65 @@
       {{ money }}
     </div>
 
-    <div class="_item _time">
-      {{ $dayjs().format('D MMMM, YYYY') }}
+    <div class="_body">
+      <div class="_doc">
+        <div class="_label">
+          Thông tin chi tiết
+        </div>
+
+        <div class="_content _bank">
+          {{ value.bank }}
+          <br>
+          {{ account }}
+        </div>
+      </div>
+
+      <div class="_doc">
+        <div class="_label">
+          Lời nhắn
+        </div>
+
+        <div class="_content _bank">
+          {{ value.content }}
+        </div>
+      </div>
+
+      <div class="_doc">
+        <div class="_label">
+          Ngày thực hiện
+        </div>
+
+        <div class="_content _bank">
+          {{ $dayjs().format('D MMMM, YYYY') }}
+        </div>
+      </div>
+
+      <div class="_doc">
+        <div class="_label">
+          Mã giao dịch
+        </div>
+
+        <div class="_content _bank">
+          {{ value.code }}
+        </div>
+      </div>
     </div>
 
-    <div class="_item _content">
-      {{ value.content }}
-    </div>
+    <!--    <div class="_item _time">-->
+    <!--      {{ $dayjs().format('D MMMM, YYYY') }}-->
+    <!--    </div>-->
 
-    <div class="_item _bank">
-      {{ bank }}
-    </div>
+    <!--    <div class="_item _content">-->
+    <!--      {{ value.content }}-->
+    <!--    </div>-->
 
-    <div class="_item _code">
-      {{ value.code }}
-    </div>
+    <!--    <div class="_item _bank">-->
+    <!--      {{ bank }}-->
+    <!--    </div>-->
+
+    <!--    <div class="_item _code">-->
+    <!--      {{ value.code }}-->
+    <!--    </div>-->
   </div>
 </template>
 
@@ -33,8 +77,8 @@ const props = defineProps<{
 
 const money = computed(() => 'VND ' + useMoneyFormat(Number(props.value.amount || 0)))
 const name = computed(() => 'Chuyển thành công' + '\n tới ' + String(props.value.name).toUpperCase())
-const bank = computed(() =>
-  props.value.bank + '\n' + String(props.value.account).replace(/(\d{4})/g, '$1 ')
+const account = computed(() =>
+  String(props.value.account).replace(/(\d{4})/g, '$1 ')
 )
 
 </script>
@@ -58,16 +102,24 @@ const bank = computed(() =>
   line-height: 22px;
 }
 
-._time {
-  top: 400px;
+._body {
+  left: 15px;
+  right: 15px;
+  position: absolute;
+  height: 240px;
+  top: 282px;
+  line-height: normal;
+  font-weight: 600;
+  font-size: 10px;
+  color: black;
 }
-._content {
-  top: 355px
+
+._label {
+  color: #555554;
+  margin-bottom: 5px;
 }
-._bank {
-  top: 298px;
-}
-._code {
-  top: 444px;
+
+._doc + ._doc {
+  margin-top: 15px;
 }
 </style>

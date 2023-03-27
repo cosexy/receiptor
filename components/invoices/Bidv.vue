@@ -54,6 +54,7 @@ const money = computed(() => useMoneyFormat(Number(props.value.amount || 0)) + '
   line-height: 16px;
   font-weight: 500;
   font-size: 11px;
+  text-align: center;
 }
 
 ._body span {

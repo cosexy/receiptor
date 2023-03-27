@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="_tech">
     <div class="_item _name">
       {{ name }}
-    </div>
-
-    <div class="_item _money">
+      <br>
       {{ money }}
     </div>
 
@@ -46,7 +44,7 @@ const bank = computed(() =>
   @apply absolute flex items-center justify-start whitespace-pre-line;
   line-height: normal;
   left: 16px;
-  font-weight: 500;
+  font-weight: 600;
   right: 16px;
   max-width: calc(100% - 32px);
   font-size: 11px;
@@ -57,12 +55,7 @@ const bank = computed(() =>
   top: 195px;
   font-size: 18px;
   font-weight: 600;
-}
-
-._item._money {
-  top: 236px;
-  font-size: 18px;
-  font-weight: 600;
+  line-height: 22px;
 }
 
 ._time {

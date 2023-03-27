@@ -166,7 +166,7 @@ const banks = shallowRef<BankEntity[]>([
   }
 ])
 
-const currentBank = shallowRef(banks.value[0])
+const currentBank = shallowRef(banks.value[1])
 const [isSuccess] = useToggle(true)
 const bankImage = computed(() => {
   if (isSuccess.value) {

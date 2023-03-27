@@ -89,6 +89,7 @@ const bank = computed(() => props.value.bank.replace(/\s(TMCP)\s/g, ' ')
 ._content {
   top: 392px;
   height: 50px;
+  width: 190px;
 }
 
 ._item._money {

@@ -26,6 +26,10 @@
           VPbank chỉ là tính năng thử nghiệm, hiện tại chỉ hỗ trợ một số ngân hàng nhất định.
         </p>
 
+        <a-form-item v-if="['VCB', 'Tech'].includes(currentBank.label)" label="Trạng Thái">
+          <a-switch v-model:checked="isSuccess" />
+        </a-form-item>
+
         <template v-if="currentBank.label === 'Acb'">
           <a-form-item label="STK người gửi">
             <a-input v-model:value="form.senderAccount" />
@@ -77,7 +81,7 @@
       <invoices-theme v-model:value="statusBar" />
     </div>
 
-    <invoices-wrapper ref="billRef" :bank="currentBank.value" :theme="statusBar" class="h-[606px] w-[280px] shrink-0">
+    <invoices-wrapper ref="billRef" :bank="bankImage" :theme="statusBar" class="h-[606px] w-[280px] shrink-0">
       <component :is="currentBank.component" :value="form" />
     </invoices-wrapper>
 
@@ -119,44 +123,58 @@ const form = reactive<InvoiceEntity>({
 
 const banks = shallowRef<BankEntity[]>([
   {
-    label: 'Vietcombank',
+    label: 'VCB',
     value: '/images/banks/vcb_dark.jpg',
     logo: 'https://api.vietqr.io/img/VCB.png',
-    component: InvoicesVcb
+    component: InvoicesVcb,
+    fail: '/images/banks/vcb2_dark.jpg'
   },
   {
-    label: 'Techcombank',
+    label: 'Tech',
     value: '/images/banks/tech_light.jpg',
     logo: 'https://api.vietqr.io/img/TCB.png',
-    component: InvoicesTech
+    component: InvoicesTech,
+    fail: '/images/banks/tech2_light.jpg'
   },
   {
     label: 'Acb',
     value: '/images/banks/acb_dark.png',
     logo: 'https://api.vietqr.io/img/ACB.png',
-    component: InvoicesAcb
+    component: InvoicesAcb,
+    fail: '/images/banks/acb_dark.png'
   },
   {
     label: 'Agribank',
     value: '/images/banks/agribank_light.jpeg',
     logo: 'https://api.vietqr.io/img/VBA.png',
-    component: InvoicesAgribank
+    component: InvoicesAgribank,
+    fail: '/images/banks/agribank_light.jpeg'
   },
   {
     label: 'BIDV',
     value: '/images/banks/bidv_light.jpg',
     logo: 'https://api.vietqr.io/img/BIDV.png',
-    component: InvoicesBidv
+    component: InvoicesBidv,
+    fail: '/images/banks/bidv_light.jpg'
   },
   {
     label: 'VPBank',
     value: '/images/banks/vpbank_dark.jpeg',
     logo: 'https://api.vietqr.io/img/VPB.png',
-    component: InvoicesVpbank
+    component: InvoicesVpbank,
+    fail: '/images/banks/vpbank_dark.jpeg'
   }
 ])
 
 const currentBank = shallowRef(banks.value[0])
+const [isSuccess] = useToggle(true)
+const bankImage = computed(() => {
+  if (isSuccess.value) {
+    return currentBank.value.value
+  }
+
+  return currentBank.value.fail
+})
 
 /**
  * Status

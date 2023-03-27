@@ -75,4 +75,13 @@ const battery = computed(() => `/images/status/${darkTheme.value ? 'dark' : 'lig
   top: 9px;
   left: 14px;
 }
+
+@font-face {
+  font-family: "San Francisco";
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+._wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
 </style>

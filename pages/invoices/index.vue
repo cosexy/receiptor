@@ -111,12 +111,12 @@ import banksData from 'assets/json/banks.json'
 import { IPhoneStatus } from '~/entities/status.entities'
 
 const form = reactive<InvoiceEntity>({
-  amount: '100000',
-  account: '123456789',
-  name: 'Tran van Nho',
-  code: 'UY3534N53454',
-  content: 'Chuyen Khoan',
-  bank: 'Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam',
+  amount: '',
+  account: '',
+  name: '',
+  code: '',
+  content: '',
+  bank: '',
   sender: '',
   senderAccount: ''
 })
